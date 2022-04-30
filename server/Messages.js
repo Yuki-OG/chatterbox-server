@@ -1,11 +1,15 @@
 const Messages = {
 
   storage: [],
+  messageId: 0,
 
   add: function add(message) {
-    console.log(`${message} added`);
+    message = JSON.parse(message);
+    message['createdAt'] = Date.now();
+    Messages.messageId++;
+    message['message_id'] = Messages.messageId;
     Messages.storage.push(message);
-    console.log('storage: ', Messages.storage);
+    console.log(Messages.storage);
   }
 
 };
